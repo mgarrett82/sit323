@@ -1,20 +1,28 @@
+// standard boilerplate information for including express and the express response module
+
 const express = require("express");
 const res = require("express/lib/response");
 const app = express();
-const add = (n1,n2) => {
+
+const add = (n1,n2) => {  //returns the value of n1+n2
     return n1+n2;
 }
 const minus = (n1,n2) => {
-    return n1-n2;
+    return n1-n2; //returns the value of n1-n2
 }
 
 const multiply = (n1,n2) => {
-    return n1*n2;
+    return n1*n2; //returns the value of n1 x n2
 }
 
 const division = (n1,n2) => {
-    return n1/n2;
+    return n1/n2; //returns the value of n1 / n2
 }
+
+/* each of the app.get functions below will activiate depending on what's written
+  "/add/n1=2&n2=3" will parse n1=2 & n2 =3 into the add funciton etc.
+each app.get also containts a try catch error block which will throw an error is a number isn't written
+*/
 
 app.get("/add", (req,res)=> {
     try{
@@ -107,6 +115,9 @@ app.get("/division", (req,res)=> {
     }
 
 });
+
+//tells the app to listen on port 3040 for the https string
+
 const port = 3040;
 app.listen(port,()=>{
     console.log("Hello I'm listening on port "+port);
