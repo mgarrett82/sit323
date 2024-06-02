@@ -1,0 +1,18 @@
+FROM node:20
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# when running the docker run command docker run -p 41960:3040 will tell docker to redirect the port to 41960
+EXPOSE 3040
+CMD [ "node", "app.js" ]
